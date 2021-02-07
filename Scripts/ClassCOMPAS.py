@@ -7,7 +7,7 @@ class COMPASData(object):
 
 
     def __init__(self, path=None, lazyData=True, Mlower=5., \
-                 Mupper=150., binaryFraction=0.7):
+                 Mupper=150., binaryFraction=1):
         self.path                = path
         if (self.path is None):
             print "Just to double check you create instance of ClassCOMPAS without path/Data"

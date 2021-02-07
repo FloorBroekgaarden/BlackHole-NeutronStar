@@ -8,9 +8,9 @@ import gc
 import string
 
 import ClassCOMPAS     as CC ###
-import ClassFormationChannels as FC 
+import ClassFormationChannels as FC
 import coencodeVarious        as CV
-from PostProcessingScripts import * 
+from PostProcessingScripts import *
 import math # for tan function and degrees function
 
 
