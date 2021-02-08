@@ -130,7 +130,7 @@ zorderlist = { 'stable B':10, 'stable B no CEE':13, \
 dictChannelsBHNSListBolt = [r'\textbf{(I) Classic}', \
                             r'\textbf{(II) Only stable mass transfer}',\
                             r'\textbf{(III) Single-core CE as first mass transfer}',\
-                             r'\textbf{(IV) Double-core CE as first mass transfer}', r'\textbf{other}']
+                             r'\textbf{(IV) Double-core CE as first mass transfer}', r'\textbf{(V) Other}']
 
 
 
@@ -1004,6 +1004,46 @@ def convert_a_to_P_circular(separation, M1, M2):
 
 
 
+    
+def getXmomentOfMT(Seeds, maxCounter=10):
+    # from Neijssel + 19 
+    #this function might become obsolete if we finetune the RLOF output
+    #with help from idea Jim Barrett
+    #to have a number for x-moment of RLOF
+
+    #make seeds into 1D array and calculate difference, meaning everytime the next line
+    #has same seed it will be zero else it will be more, except for the very first line.
+    offsetIndices = np.diff(Seeds)
+    #I dont care about the difference just that it is nonzero, make it all into 0-1s
+    offsetIndices[offsetIndices>=1] = 1
+
+    #Create am empty array to turn into a boolean slice, since the np.diff ommits
+    #first line we add one to the length.
+    indices       = np.zeros(len(offsetIndices)+1)
+    indices[0]    = 1
+    #Now an array with 0 and 1s where every one is the first line of a different seed.
+    #This effectively is the first moment of mass transfer of the system.
+    indices[1:]   = offsetIndices
+
+    
+    
+    #so nr 1 is first moment,
+    counter = 2
+    while (0. in indices) and (counter <=maxCounter):
+        #get indices
+        indexFilled   = np.where(indices != 0)
+        #add 1 essentially move one row down
+        indexFilledTemp  = indexFilled[0] + 1
+        #if not marked alreaydy i.e. in indexFilled 
+        notMarked = np.logical_not(np.in1d(indexFilledTemp,indexFilled))
+        #and if index not bigger than array
+        notTooBig = indexFilledTemp < (len(indices) -1)
+        #give me those indices
+        indexFilledTemp = indexFilledTemp[notMarked & notTooBig]
+        #and fill in the RLOF counter as anotehr moment of RLOF
+        indices[np.array(indexFilledTemp,)] = counter
+        counter+=1
+    return indices
 
 
 

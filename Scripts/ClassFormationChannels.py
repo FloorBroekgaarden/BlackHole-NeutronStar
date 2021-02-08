@@ -9,8 +9,8 @@ class FormationChannels(object):
 
         #general settings data
         self.path   = path
-        if os.path.isfile(path+'COMPASOutput.h5'):
-            self.h5file           = h5.File(path+'COMPASOutput.h5')
+        if os.path.isfile(path):
+            self.h5file           = h5.File(path)
         else:
             raise ValueError("h5 file not found. Invalid path?")
 

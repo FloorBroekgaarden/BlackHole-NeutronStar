@@ -8,8 +8,6 @@ import gc
 import string
 
 import ClassCOMPAS     as CC ###
-import ClassFormationChannels as FC
-import coencodeVarious        as CV
 from PostProcessingScripts import *
 import math # for tan function and degrees function
 
@@ -30,7 +28,8 @@ def returnSeedsPercentageClassicAndOnlyStableMT(pathCOMPASOutput='/Volumes/Andro
     #not be there but should not be too many
 
     # retrive hdf5 file 
-    f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    # f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    f          = h5.File(pathCOMPASOutput)
 
     # obtain the BHNS seeds: 
     Data            = CC.COMPASData(path=pathCOMPASOutput, lazyData=True, Mlower=5., \
@@ -95,8 +94,8 @@ def returnSeedsPercentageClassicAndOnlyStableMT(pathCOMPASOutput='/Volumes/Andro
 
     # dont care about 4th and 5th moment etc will take longer to
     # calculate those
-    nthMoment   = CV.getXmomentOfMT(RLOFseeds, maxCounter=3)
-    print(len(RLOFseeds))
+    nthMoment   = getXmomentOfMT(RLOFseeds, maxCounter=3)
+    # print(len(RLOFseeds))
 
 
     gc.collect()
@@ -289,7 +288,8 @@ def returnSeedsPercentageDoubleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
     #not be there but should not be too many
 
     # retrive hdf5 file 
-    f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    # f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    f          = h5.File(pathCOMPASOutput)
 
     # obtain the BHNS seeds: 
     Data            = CC.COMPASData(path=pathCOMPASOutput, lazyData=True, Mlower=5., \
@@ -354,7 +354,7 @@ def returnSeedsPercentageDoubleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
 
     # dont care about 4th and 5th moment etc will take longer to
     # calculate those
-    nthMoment   = CV.getXmomentOfMT(RLOFseeds, maxCounter=3)
+    nthMoment   = getXmomentOfMT(RLOFseeds, maxCounter=3)
     # print(len(RLOFseeds))
 
 
@@ -381,7 +381,7 @@ def returnSeedsPercentageDoubleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
     nrSystemsInterest = np.sum(weights[systemsOfInterest])
     
 
-    testMoment   = CV.getXmomentOfMT(seedsRemain, maxCounter=10)
+    testMoment   = getXmomentOfMT(seedsRemain, maxCounter=10)
     # print np.max(testMoment)
 
 
@@ -443,7 +443,8 @@ def returnSeedsPercentageSingleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
     #not be there but should not be too many
 
     # retrive hdf5 file 
-    f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    # f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    f          = h5.File(pathCOMPASOutput)
 
     # obtain the BHNS seeds: 
     Data            = CC.COMPASData(path=pathCOMPASOutput, lazyData=True, Mlower=5., \
@@ -508,7 +509,7 @@ def returnSeedsPercentageSingleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
 
     # dont care about 4th and 5th moment etc will take longer to
     # calculate those
-    nthMoment   = CV.getXmomentOfMT(RLOFseeds, maxCounter=3)
+    nthMoment   = getXmomentOfMT(RLOFseeds, maxCounter=3)
     # print(len(RLOFseeds))
 
 
@@ -537,7 +538,7 @@ def returnSeedsPercentageSingleCoreCEE(pathCOMPASOutput='/Volumes/Andromeda/DATA
     nrSystemsInterest = np.sum(weights[systemsOfInterest])
     
 
-    testMoment   = CV.getXmomentOfMT(seedsRemain, maxCounter=10)
+    testMoment   = getXmomentOfMT(seedsRemain, maxCounter=10)
     # print np.max(testMoment)
 
 
@@ -604,7 +605,8 @@ def returnSeedsPercentageOther(pathCOMPASOutput='/Volumes/Andromeda/DATA/AllDCO_
                                 binaryFraction=1, channelsSeedsList=[]):
     
     
-    f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    # f          = h5.File(pathCOMPASOutput+'COMPASOutput.h5')
+    f          = h5.File(pathCOMPASOutput)
 
     # obtain the BHNS seeds: 
     Data            = CC.COMPASData(path=pathCOMPASOutput, lazyData=True, Mlower=5., \

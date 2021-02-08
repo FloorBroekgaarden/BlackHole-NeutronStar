@@ -147,7 +147,7 @@ def retrieveMassEvolvedPerZ(path):
     
     #After running this, I am not so happy anymore
     #This is too fast, no time to walk away and grab coffee ;p
-    path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
+    # path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
     f = h5.File(path, 'r') # open in read-
     allSystems = f['systems']
     metals = (allSystems['Metallicity1'])[...]
@@ -163,7 +163,7 @@ def retrieveMassEvolvedPerZ(path):
 def retrieveNbinariesEvolvedPerZ(path):  # /floor added this function to replace function above. 
     # returns array with N of binaries simulated in each COMPAS run. 
 
-    path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
+    # path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
     f = h5.File(path, 'r') # open in read-only
     allSystems = f['systems']
     metals = (allSystems['Metallicity1'])[...]
@@ -180,7 +180,7 @@ def retrieveNbinariesEvolvedPerZ(path):  # /floor added this function to replace
 
 def retrieveBoolWeightedSimulation(path): # //floor 
     """returns True if the simulation used weighted samples (not one) """
-    path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
+    # path = os.path.join(path, 'COMPASOutput.h5') #path+'COMPASOutput.h5'
     f = h5.File(path, 'r') # open in read-only
     allSystems = f['systems']
     metals = (allSystems['Metallicity1'])[...]

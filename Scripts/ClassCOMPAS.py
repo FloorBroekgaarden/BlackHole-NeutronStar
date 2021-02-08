@@ -10,11 +10,17 @@ class COMPASData(object):
                  Mupper=150., binaryFraction=1):
         self.path                = path
         if (self.path is None):
-            print "Just to double check you create instance of ClassCOMPAS without path/Data"
-        elif not  os.path.isfile(path+'COMPASOutput.h5'):
+            print("Just to double check you create instance of ClassCOMPAS without path/Data")
+        elif not  os.path.isfile(path):
             raise ValueError("h5 file not found. Wrong path given?", "path given = %s"%path)
-        elif os.path.isfile(path+'COMPASOutput.h5'):
-            self.h5file           = h5.File(path+'COMPASOutput.h5')
+        elif os.path.isfile(path):
+            self.h5file           = h5.File(path)
+        # old code with fixed COMPAS h5 filename:
+        #
+        # elif not  os.path.isfile(path+'COMPASOutput.h5'):
+        #     raise ValueError("h5 file not found. Wrong path given?", "path given = %s"%path)
+        # elif os.path.isfile(path+'COMPASOutput.h5'):
+        #     self.h5file           = h5.File(path+'COMPASOutput.h5')
 
 
 
@@ -55,7 +61,7 @@ class COMPASData(object):
         if self.path is not None:
            self.setGridAndMassEvolved()        
 
-        print "Remember to  self.setCOMPASDCOmask() adag and self.setCOMPASData()"
+        print("Remember to  self.setCOMPASDCOmask() and self.setCOMPASData()")
 
     
     def setCOMPASDCOmask(self, types='BBH', withinHubbleTime=True, optimistic=False):
