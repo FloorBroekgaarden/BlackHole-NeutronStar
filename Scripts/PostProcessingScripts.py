@@ -1,4 +1,4 @@
-from __future__ import division 
+from __future__ import division # in case this script is used in python 2 
 import h5py as h5
 
 
