@@ -13,3 +13,10 @@ In addition, the data/code can be used to obtain population of BHNS mergers for 
 Feel free to email any questions, suggestions or requests to floor.broekgaarden@cfa.harvard.edu
 
 
+
+
+The directories contain: 
+
+ - Scripts: general python scripts that are used throughout the jupyte notebooks
+ - otherCode: raw code used to calculate the cosmic integration weights, or the credible intervals. You only have to use this code if you want to calculate weights from scratch 
+ - plottingCode: jupyter notebooks to recreate all figures in the paper, as well as all results (such as those presented in Tables) 
