@@ -20,7 +20,7 @@ The directories contain:
 
 
 
-A overleaf template to recreate Table 1 is given (and free to use) at https://www.overleaf.com/7756463156hthtyzgzdkhn
+An overleaf template to recreate Table 1 is given (and free to use) at https://www.overleaf.com/7756463156hthtyzgzdkhn
 
 
 I welcome questions, suggestions or requests, please email floor.broekgaarden@cfa.harvard.edu
