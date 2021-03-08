@@ -1,0 +1,4 @@
+*.csv
+*.pyc
+WriteRatesToCSV_EM.py
+*checkpoint.ipynb
