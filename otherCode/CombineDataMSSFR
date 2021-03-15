@@ -1,0 +1,63 @@
+# first metallicity
+#other metallicities
+cp alpha0_1/Z_0.0001/AIS_combined/COMPASOutput.h5 alpha0_1/COMPASOutput_temp.h5
+
+for metallicity in  0.0002  0.0005 0.001 0.002 0.006 0.0142 0.03 ; do python   combineHdf5.py $metallicity 'alpha0_1'; echo "now at $metallicity"; mv alpha0_1/COMPASOutput.h5 alpha0_1/COMPASOutput_temp.h5; done
+
+
+
+
+mv alpha10/COMPASOutput_temp.h5
+
+
+
+
+cp RAPID/Z_0.0001/AIS_combined/COMPASOutput.h5 RAPID/COMPASOutput_temp.h5
+
+for metallicity in  0.0002  0.0005 0.001 0.002 0.006 0.0142 0.03   ; do python   combineHdf5.py $metallicity 'RAPID'; echo "now at $metallicity"; mv RAPID/COMPASOutput.h5 RAPID/COMPASOutput_temp.h5; done
+
+mv RAPID/COMPASOutput_temp.h5 RAPID/COMPASOutput.h5
+0.00012174 0.0001482  0.00018041 0.0002 0.00026736
+0.00032547 0.00039621 0.0005 0.00058717 0.00071479 
+0.00087016 0.001 0.00128954 0.00156983  0.002 
+0.00232642 0.00283208 0.00344765 0.00419702 0.00510928 
+0.006 0.00757174 0.00921751 0.011221   0.0142 
+
+0.01662905 0.02024349 0.02464355 0.03 
+
+UnstablecaseBB
+
+cp UnstablecaseBB/Z_0.0001/AIS_combined/COMPASOutput.h5 UnstablecaseBB/COMPASOutput_temp.h5
+
+
+for metallicity in  0.0002  0.0005 0.001 0.002 0.006 0.0142 0.03   ; do python   combineHdf5.py $metallicity 'UnstablecaseBB'; echo "now at $metallicity"; mv UnstablecaseBB/COMPASOutput.h5 UnstablecaseBB/COMPASOutput_temp.h5; done
+0.00012174 0.0001482  0.00018041 0.0002 0.00026736
+0.00032547 0.00039621 0.0005 0.00058717 0.00071479 
+0.00087016 0.001 0.00128954 0.00156983  0.002 
+0.00232642 0.00283208 0.00344765 0.00419702 0.00510928 
+
+0.006 0.00757174 0.00921751 0.011221   0.0142 
+0.01662905 0.02024349 0.02464355 0.03 
+
+for metallicity in     0.00012174 0.0001482  0.00018041 0.0002 0.00026736  0.00032547 0.00039621 0.0005 0.00058717 0.00071479 0.00087016 0.001 0.00128954 0.00156983 0.002 
+; do python   combineHdf5.py $metallicity 'UnstablecaseBB'; echo "now at $metallicity"; mv UnstablecaseBB/COMPASOutput.h5 UnstablecaseBB/COMPASOutput_temp.h5; done
+
+0.00232642 0.00283208 0.00344765 0.00419702 0.00510928 0.006 0.00757174 0.00921751 0.011221   0.0142 0.01662905 0.02024349 0.02464355 0.03 
+
+
+
+
+
+cp BHkickZERO/Z_0.0001/AIS_combined/COMPASOutput.h5 BHkickZERO/COMPASOutput_temp.h5
+
+for metallicity in  0.0002  0.0005 0.001 0.002 0.006 0.0142 0.03   ; do python   combineHdf5.py $metallicity 'BHkickZERO'; echo "now at $metallicity"; mv BHkickZERO/COMPASOutput.h5 BHkickZERO/COMPASOutput_temp.h5; done
+
+
+cp SuperEddington/Z_0.0001/AIS_combined/COMPASOutput.h5 SuperEddington/COMPASOutput_temp.h5
+
+for metallicity in  0.0002  0.0005 0.001 0.002 0.006 0.0142 0.03   ; do python   combineHdf5.py $metallicity 'SuperEddington'; echo "now at $metallicity"; mv SuperEddington/COMPASOutput.h5 SuperEddington/COMPASOutput_temp.h5; done
+
+
+
+
+for metallicity in 0.00012174 0.0001482  0.00018041 0.0002 0.00026736 0.00032547 0.00039621 0.0005 0.00058717 0.00071479 0.00087016 0.001 0.00128954 0.00156983  0.002 0.00232642 0.00283208 0.00344765 0.00419702 0.00510928 0.006 0.00757174 0.00921751 0.011221   0.0142 0.01662905 0.02024349 0.02464355 0.03 ; do condor_submit Z_$metallicity/AIS_sampling/postProcessing.submit; done
